@@ -8,6 +8,20 @@ const Body = () => {
   const [filtered, setFiltered] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    // setResData(json) Commented as using mock data
+    setResData(RES_DATA);
+    setFiltered(RES_DATA);
+  };
+
   const handleFilterClick = () => {
     const filteredData = resData.filter((res) => {
       return res.rating >= 4.5;
@@ -28,20 +42,6 @@ const Body = () => {
   const handleInputChange = () => {
     setSearchValue(event.target.value);
   };
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    // setResData(json) Commented as using mock data
-    setResData(RES_DATA);
-    setFiltered(RES_DATA);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   if (resData.length === 0) {
     return <Shimmer />;
