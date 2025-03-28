@@ -3,11 +3,14 @@ import Shimmer from "./Shimmer";
 import ResturantCard from "./ResturandCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -43,6 +46,12 @@ const Body = () => {
   const handleInputChange = () => {
     setSearchValue(event.target.value);
   };
+
+  if (!onlineStatus) {
+    return (
+      <h2>Youur internet is offline. Please check your internet connection!</h2>
+    );
+  }
 
   if (resData.length === 0) {
     return <Shimmer />;
