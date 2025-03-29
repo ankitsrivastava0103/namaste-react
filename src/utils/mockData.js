@@ -7,6 +7,7 @@ const RES_DATA = [
     eta: "30 mins",
     location: "Downtown",
     price_range: "$$",
+    promoted: true,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const RES_DATA = [
     eta: "25 mins",
     location: "City Center",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const RES_DATA = [
     eta: "40 mins",
     location: "Uptown",
     price_range: "$$$",
+    promoted: true,
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const RES_DATA = [
     eta: "20 mins",
     location: "Midtown",
     price_range: "$",
+    promoted: false,
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const RES_DATA = [
     eta: "35 mins",
     location: "East Side",
     price_range: "$$",
+    promoted: true,
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const RES_DATA = [
     eta: "22 mins",
     location: "City Center",
     price_range: "$",
+    promoted: false,
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ const RES_DATA = [
     eta: "30 mins",
     location: "Downtown",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ const RES_DATA = [
     eta: "28 mins",
     location: "Old Town",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 9,
@@ -79,6 +87,7 @@ const RES_DATA = [
     eta: "18 mins",
     location: "West End",
     price_range: "$",
+    promoted: false,
   },
   {
     id: 10,
@@ -88,6 +97,7 @@ const RES_DATA = [
     eta: "32 mins",
     location: "Uptown",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 11,
@@ -97,6 +107,7 @@ const RES_DATA = [
     eta: "27 mins",
     location: "South Side",
     price_range: "$$$",
+    promoted: false,
   },
   {
     id: 12,
@@ -106,6 +117,7 @@ const RES_DATA = [
     eta: "24 mins",
     location: "Midtown",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 13,
@@ -115,6 +127,7 @@ const RES_DATA = [
     eta: "30 mins",
     location: "Downtown",
     price_range: "$$",
+    promoted: false,
   },
   {
     id: 14,
@@ -124,6 +137,7 @@ const RES_DATA = [
     eta: "45 mins",
     location: "City Center",
     price_range: "$$$",
+    promoted: false,
   },
   {
     id: 15,
@@ -133,6 +147,7 @@ const RES_DATA = [
     eta: "15 mins",
     location: "East Side",
     price_range: "$",
+    promoted: false,
   },
 ];
 

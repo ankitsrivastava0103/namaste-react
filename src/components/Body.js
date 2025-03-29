@@ -1,9 +1,11 @@
 import RES_DATA from "../utils/mockData";
 import Shimmer from "./Shimmer";
-import ResturantCard from "./ResturandCard";
+import ResturantCard, { withPromotedLabel } from "./ResturandCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
+const ResturandCardPromoted = withPromotedLabel(ResturantCard);
 
 const Body = () => {
   const [resData, setResData] = useState([]);
@@ -89,7 +91,11 @@ const Body = () => {
         {filtered?.map((resturant) => {
           return (
             <Link key={resturant.id} to={"/resurant/" + resturant.id}>
-              <ResturantCard resturantData={resturant} />
+              {resturant?.promoted ? (
+                <ResturandCardPromoted resturantData={resturant} />
+              ) : (
+                <ResturantCard resturantData={resturant} />
+              )}
             </Link>
           );
         })}
