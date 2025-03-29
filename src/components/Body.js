@@ -49,7 +49,9 @@ const Body = () => {
 
   if (!onlineStatus) {
     return (
-      <h2>Youur internet is offline. Please check your internet connection!</h2>
+      <h2 className="text-3xl font-bold underline">
+        Youur internet is offline. Please check your internet connection!
+      </h2>
     );
   }
 
@@ -59,21 +61,31 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border  border-solid border-black"
             onChange={handleInputChange}
             value={searchValue}
           />
-          <button onClick={handleSearchClick}>Search</button>
+          <button
+            className="p-1 bg-green-100 m-4 cursor-pointer rounded-lg"
+            onClick={handleSearchClick}
+          >
+            Search
+          </button>
         </div>
-        <button className="filtter-button" onClick={handleFilterClick}>
-          Top Rated Resturants
-        </button>
+        <div className="m-4 p-4">
+          <button
+            className="p-1 bg-gray-100 m-4 cursor-pointer rounded-lg"
+            onClick={handleFilterClick}
+          >
+            Top Rated Resturants
+          </button>
+        </div>
       </div>
-      <div className="resturant-container">
+      <div className="flex flex-wrap m-4 p-4 rounded-lg">
         {filtered?.map((resturant) => {
           return (
             <Link key={resturant.id} to={"/resurant/" + resturant.id}>
