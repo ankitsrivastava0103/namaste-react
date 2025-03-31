@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { RES_ID_URL } from "./constants";
 
 const useResturantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
@@ -8,21 +9,10 @@ const useResturantMenu = (resId) => {
   }, []);
 
   const fetchMenuData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
+    const URL = RES_ID_URL(resId);
+    const data = await fetch(URL);
     const json = await data.json();
-
-    setResInfo({
-      id: 1,
-      name: "Spice Garden",
-      cuisine: "Indian",
-      rating: 4.5,
-      eta: "30 mins",
-      location: "Downtown",
-      price_range: "$$",
-    });
+    setResInfo(json.data);
   };
 
   return resInfo;

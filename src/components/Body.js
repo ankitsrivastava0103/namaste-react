@@ -20,24 +20,27 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6314201&lng=88.4125157&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    // setResData(json) Commented as using mock data
-    setResData(RES_DATA);
-    setFiltered(RES_DATA);
+    console.log("Data", json.data);
+    const resData =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setResData(resData);
+    setFiltered(resData);
   };
 
   const handleFilterClick = () => {
     const filteredData = resData.filter((res) => {
-      return res.rating >= 4.5;
+      return res?.info?.avgRating >= 4.5;
     });
     setFiltered(filteredData);
   };
 
   const handleSearchClick = () => {
     const filteredData = resData.filter((res) => {
-      const name = res.name.toLowerCase();
+      const name = res?.info?.name.toLowerCase();
       if (name.includes(searchValue.toLowerCase())) {
         return res;
       }
@@ -90,11 +93,14 @@ const Body = () => {
       <div className="flex flex-wrap m-4 p-4 rounded-lg">
         {filtered?.map((resturant) => {
           return (
-            <Link key={resturant.id} to={"/resurant/" + resturant.id}>
-              {resturant?.promoted ? (
-                <ResturandCardPromoted resturantData={resturant} />
+            <Link
+              key={resturant?.info?.id}
+              to={"/resurant/" + resturant?.info?.id}
+            >
+              {resturant?.info?.promoted ? (
+                <ResturandCardPromoted resturantData={resturant?.info} />
               ) : (
-                <ResturantCard resturantData={resturant} />
+                <ResturantCard resturantData={resturant?.info} />
               )}
             </Link>
           );
