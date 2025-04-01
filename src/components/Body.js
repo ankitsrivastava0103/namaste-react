@@ -1,9 +1,10 @@
 import RES_DATA from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import ResturantCard, { withPromotedLabel } from "./ResturandCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const ResturandCardPromoted = withPromotedLabel(ResturantCard);
 
@@ -11,6 +12,7 @@ const Body = () => {
   const [resData, setResData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -23,7 +25,6 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6314201&lng=88.4125157&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log("Data", json.data);
     const resData =
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
@@ -88,6 +89,14 @@ const Body = () => {
           >
             Top Rated Resturants
           </button>
+        </div>
+        <div className="m-4 p-4">
+          <label>UserName : </label>
+          <input
+            className="p-1 m-1 border border-black"
+            onChange={(event) => setUserName({ name: event.target.value })}
+            value={loggedInUser}
+          />
         </div>
       </div>
       <div className="flex flex-wrap m-4 p-4 rounded-lg">
