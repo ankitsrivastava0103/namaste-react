@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import { IMG_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ item }) => {
   const info = item?.card.info;
+
+  const dispatch = useDispatch();
+
+  const handleAddItems = () => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="flex justify-between border-gray-200 border-b-2 p-2 m-4">
@@ -14,7 +22,10 @@ const ItemList = ({ item }) => {
       </div>
       <div className="w-3/12 relative">
         <div>
-          <button className="absolute bg-white p-2 top-2 right-2 cursor-pointer">
+          <button
+            className="absolute bg-white p-2 top-2 right-2 cursor-pointer"
+            onClick={() => handleAddItems(info)}
+          >
             Add +
           </button>
         </div>

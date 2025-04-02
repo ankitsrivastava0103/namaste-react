@@ -19,3 +19,13 @@
 - HTTPs Server
 - Tree Shaking - Remove Unused Code
 - Different Builds For Dev and Production
+
+# Redux Toolkit 
+
+ - Install Library , RTK and React Redux 
+ - Build Our Store 
+ - Connect Our Store To Our App
+ - Create A Cart Slice 
+ - Dispatch Action - When clicked on Add Button
+ - Reducer Fucntion
+ - Read Data USing Selector
